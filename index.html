@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedagogie - Seminar</title>
+    <link rel="icon" href="icon.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans antialiased">
+    <main class="max-w-6xl mx-auto px-4 py-10 space-y-20 pb-32">
+        <section id="pasul-1" class="lesson-step scroll-mt-8" data-step="1">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-8 border-indigo-500">
+                <p class="step-kicker">Pasul 1 · Metoda problematizării</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Ce problemă trebuie să rezolvăm?</h1>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1 text-lg leading-relaxed text-slate-600 space-y-4">
+                        <p>Primăria are un buget limitat pentru a conecta toate cartierele orașului prin fibră optică. Pentru fiecare rută posibilă cunoaștem costul de construire.</p>
+                        <p><strong>Problema pentru care căutăm o rezolvare:</strong> cum conectăm toate cartierele între ele, folosind rute suficiente pentru ca informația să ajungă din orice punct în orice alt punct, dar cu <strong>costul total minim</strong>?</p>
+                        <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mt-4 rounded-r-lg"><strong>Întrebarea-problemă:</strong> ce muchii alegem și ce muchii refuzăm pentru a obține cea mai ieftină rețea fără legături inutile?</div>
+                    </div>
+                    <div class="w-full md:w-1/3 flex justify-center"><div class="text-[100px]">🏙️🔌</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pasul-2" class="lesson-step scroll-mt-8" data-step="2">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">    
+                <p class="step-kicker">Pasul 2 · Metoda învățării prin descoperire</p>
+                <h2 class="text-3xl font-bold mb-8 text-slate-800">Descoperim algoritmul prin întrebări</h2>
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden"><button class="accordion-btn w-full text-left px-6 py-5 font-semibold text-lg flex justify-between items-center hover:bg-slate-50 transition"><span>1. Cu ce muchie începem?</span><span class="text-indigo-500 text-2xl font-bold">+</span></button><div class="accordion-content bg-indigo-50 px-6 text-slate-700"><p>Alegem muchia cu costul cel mai mic. Aceasta este alegerea lacomă, numită și strategie <strong>Greedy</strong>.</p></div></div>
+                    <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden"><button class="accordion-btn w-full text-left px-6 py-5 font-semibold text-lg flex justify-between items-center hover:bg-slate-50 transition"><span>2. Ce facem dacă muchia formează un ciclu?</span><span class="text-indigo-500 text-2xl font-bold">+</span></button><div class="accordion-content bg-red-50 px-6 text-slate-700"><p>O respingem. Dacă cele două noduri sunt deja conectate, muchia ar crea un <strong>ciclu</strong> și nu ar mai ajuta la conectarea unui nod nou.</p></div></div>
+                    <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden"><button class="accordion-btn w-full text-left px-6 py-5 font-semibold text-lg flex justify-between items-center hover:bg-slate-50 transition"><span>3. Când ne oprim?</span><span class="text-indigo-500 text-2xl font-bold">+</span></button><div class="accordion-content bg-green-50 px-6 text-slate-700"><p>Când toate nodurile sunt conectate. Un arbore cu <strong>N</strong> noduri are exact <strong>N - 1</strong> muchii.</p></div></div>
+                </div>
+                <div class="mt-8 p-5 rounded-xl bg-slate-900 text-white text-center"><strong>Ipoteza noastră:</strong> sortăm muchiile după cost și păstrăm doar muchiile care nu formează cicluri.</div>
+            </div>
+        </section>
+
+        <section id="pasul-3" class="lesson-step scroll-mt-8" data-step="3">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12"><p class="step-kicker">Pasul 3 · Explicația algoritmului</p><h2 class="text-3xl font-bold mb-6 text-slate-800">Cum funcționează Kruskal și cum verificăm un ciclu?</h2><div class="grid md:grid-cols-2 gap-6"><div class="explanation-card"><span class="explanation-number">01</span><h3 class="font-bold text-xl mb-2">Sortăm</h3><p>Ordonăm toate muchiile crescător după cost. Algoritmul va analiza mai întâi variantele cele mai ieftine.</p></div><div class="explanation-card"><span class="explanation-number">02</span><h3 class="font-bold text-xl mb-2">Verificăm</h3><p>Pentru muchia curentă întrebăm dacă nodurile ei aparțin aceleiași componente conexe.</p></div><div class="explanation-card"><span class="explanation-number">03</span><h3 class="font-bold text-xl mb-2">Acceptăm sau respingem</h3><p>Dacă rădăcinile sunt diferite, acceptăm muchia și unim componentele. Dacă rădăcinile sunt egale, muchia formează ciclu și este respinsă.</p></div><div class="explanation-card"><span class="explanation-number">04</span><h3 class="font-bold text-xl mb-2">Structura DSU</h3><p><strong>Find</strong> găsește reprezentantul unei componente, iar <strong>Union</strong> unește două componente diferite. Compresia drumului face căutările rapide.</p></div></div><div class="mt-8 bg-indigo-50 border-l-4 border-indigo-500 p-5 rounded-r-lg"><strong>Regula de decizie:</strong> dacă <code>find(u) != find(v)</code>, muchia nu formează ciclu și poate intra în arborele parțial.</div></div>
+        </section>
+
+        <section id="pasul-4" class="lesson-step scroll-mt-8" data-step="4">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <div class="bg-slate-900 px-6 py-5"><p class="step-kicker step-kicker-dark">Pasul 4 · Experiment</p><h2 class="text-2xl font-bold text-white">Simulatorul grafului</h2><p class="text-slate-400 text-sm mt-1">Construiește un exemplu și urmărește deciziile algoritmului.</p></div>
+                <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="lg:col-span-4 flex flex-col gap-6">
+                        <div id="inputPanel" class="bg-slate-50 p-4 rounded-xl border border-slate-200"><h3 class="font-semibold text-slate-700 mb-3">Adaugă o muchie nouă</h3><div class="flex gap-2 mb-3"><input type="text" id="inNodeU" placeholder="Nod 1 (ex: A)" class="w-1/3 px-3 py-2 rounded-lg border border-slate-300 uppercase focus:outline-none focus:ring-2 focus:ring-indigo-500" maxlength="2"><input type="text" id="inNodeV" placeholder="Nod 2 (ex: B)" class="w-1/3 px-3 py-2 rounded-lg border border-slate-300 uppercase focus:outline-none focus:ring-2 focus:ring-indigo-500" maxlength="2"><input type="number" id="inCost" placeholder="Cost" class="w-1/3 px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"></div><button id="btnAddEdge" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-2 rounded-lg transition-colors">+ Adaugă Muchie</button></div>
+                        <div class="flex-grow flex flex-col"><h3 class="font-semibold text-slate-700 mb-2 flex justify-between"><span>Muchii adăugate</span><span id="edgeCount" class="text-sm bg-indigo-100 text-indigo-700 px-2 rounded-full">0</span></h3><div class="bg-white border border-slate-200 rounded-xl flex-grow overflow-y-auto max-h-[250px] p-2"><ul id="edgeListUI" class="space-y-1"><li class="text-slate-400 text-sm text-center py-4 italic">Nicio muchie adăugată.</li></ul></div></div>
+                        <button id="btnStartKruskal" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed" disabled>Începe algoritmul Kruskal</button>
+                    </div>
+                    <div class="lg:col-span-8 flex flex-col gap-4 relative"><div class="bg-white border-2 border-dashed border-slate-300 rounded-xl h-[400px] flex justify-center items-center relative overflow-hidden"><svg id="svgGraph" viewBox="0 0 600 400" class="w-full h-full drop-shadow-sm"></svg></div><div id="controlPanel" class="hidden bg-slate-100 p-4 rounded-xl border border-slate-200 flex-col gap-4"><div class="flex justify-between items-center"><div id="statusText" class="font-mono text-sm md:text-base font-medium text-slate-700 bg-white px-4 py-2 rounded-lg border border-slate-300 w-full md:w-3/4">Așteptăm începerea analizei...</div><button id="btnNextStep" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors whitespace-nowrap ml-4">Pasul următor ➔</button></div><div class="flex gap-4 text-xs font-medium text-slate-600 justify-center"><div class="flex items-center gap-1"><span class="w-4 h-1.5 bg-yellow-500 rounded"></span> Se verifică</div><div class="flex items-center gap-1"><span class="w-4 h-1.5 bg-green-500 rounded"></span> Acceptată</div><div class="flex items-center gap-1"><span class="w-4 h-1.5 bg-red-500 rounded"></span> Respinsă</div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pasul-5" class="lesson-step scroll-mt-8" data-step="5">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <p class="step-kicker">Pasul 5 · Analiza eficienței</p>
+                <h2 class="text-3xl font-bold mb-6 text-slate-800">Complexitatea algoritmului</h2>
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div class="complexity-card"><strong>Sortarea</strong><span>O(M log M)</span><p>Avem M muchii și le sortăm crescător după cost.</p></div>
+                    <div class="complexity-card"><strong>Operațiile DSU</strong><span>O(α(N)) amortizat</span><p>O operație <code>Find</code> sau <code>Union</code> este aproape constantă când folosim cele două optimizări DSU.</p></div>
+                    <div class="complexity-card"><strong>Total Kruskal</strong><span>O(M log M)</span><p>Sortarea domină timpul de execuție, deoarece α(N) crește extrem de lent.</p></div>
+                </div>
+                <div class="mt-8 grid md:grid-cols-2 gap-5">
+                    <div class="complexity-detail bg-indigo-50 border-l-4 border-indigo-500 p-5 rounded-r-lg">
+                        <h3 class="font-bold text-lg text-indigo-900 mb-2">Ce este α(N)?</h3>
+                        <p class="text-slate-700">α(N) este <strong>funcția Ackermann inversă</strong>. Funcția Ackermann crește atât de repede, încât inversa ei crește extrem de lent. Pentru orice dimensiune realistă a unei probleme, α(N) are o valoare foarte mică, de obicei cel mult 4 sau 5.</p>
+                    </div>
+                    <div class="complexity-detail bg-slate-100 border-l-4 border-slate-500 p-5 rounded-r-lg">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">De ce DSU este rapid?</h3>
+                        <p class="text-slate-700"><strong>Path compression</strong> scurtează drumurile către rădăcină după fiecare <code>Find</code>, iar <strong>union by size/rank</strong> leagă arborele mai mic sub arborele mai mare. Împreună, aceste optimizări duc la costul amortizat O(α(N)).</p>
+                    </div>
+                </div>
+                <div class="mt-6 p-5 rounded-xl bg-slate-900 text-white">
+                    <p><strong>Memorie:</strong> O(N + M), pentru noduri, părinții DSU și lista muchiilor.</p>
+                    <p class="mt-2 text-slate-300">Complexitatea completă este O(M log M + M α(N)), simplificată la O(M log M), deoarece sortarea este partea dominantă.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pasul-6" class="lesson-step scroll-mt-8" data-step="6">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12"><p class="step-kicker">Pasul 6 · Formalizare</p><h2 class="text-3xl font-bold mb-6 text-slate-800">Pseudocodul algoritmului Kruskal</h2><pre class="pseudocode"><code>KRUSKAL(G = (V, E))
+    sortează muchiile E crescător după cost
+    pentru fiecare nod v din V:
+        MAKE-SET(v)
+
+    MST = mulțime vidă
+    pentru fiecare muchie (u, v) din E:
+        dacă FIND(u) != FIND(v):
+            adaugă (u, v) în MST
+            UNION(u, v)
+
+        dacă numărul muchiilor din MST este |V| - 1:
+            oprește-te
+
+    returnează MST</code></pre><div class="mt-6 grid md:grid-cols-2 gap-5"><div class="bg-green-50 border-l-4 border-green-500 p-4"><strong>Acceptare:</strong> reprezentanții sunt diferiți, deci muchia conectează două componente.</div><div class="bg-red-50 border-l-4 border-red-500 p-4"><strong>Respingere:</strong> reprezentanții sunt egali, deci muchia ar închide un ciclu.</div></div></div>
+        </section>
+
+        <section id="pasul-7" class="lesson-step scroll-mt-8" data-step="7">
+            <div class="source-panel bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-700"><div class="p-8 md:p-10"><p class="step-kicker step-kicker-dark">Pasul 7 · Aplicare</p><h2 class="text-3xl font-bold text-white mb-2">Fișierele sursă</h2><p class="text-slate-400 mb-6">Implementările complete în C++ și Python, folosind DSU.</p></div><div class="flex bg-slate-800 border-b border-slate-700 text-sm font-medium"><button class="code-tab-btn active px-6 py-3 text-indigo-400 border-b-2 border-indigo-400 bg-slate-900/50" data-target="code-cpp">C++</button><button class="code-tab-btn px-6 py-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent" data-target="code-python">Python</button></div><div class="code-area"><div id="code-cpp" class="code-tab-content block"><pre class="m-0 p-4"><code class="language-cpp" data-source="kruskal.cpp">Se încarcă sursa C++...</code></pre></div><div id="code-python" class="code-tab-content hidden"><pre class="m-0 p-4"><code class="language-python" data-source="kruskal.py">Se încarcă sursa Python...</code></pre></div></div></div>
+        </section>
+    </main>
+
+    <div id="stepNavigation" class="step-navigation" aria-label="Navigare între pașii lecției"><button id="previousStep" class="step-nav-button previous" type="button" aria-label="Revino la pasul anterior">← <span>Anterior</span></button><span id="stepIndicator" class="step-indicator">Pasul 1 din 7</span><button id="nextStep" class="step-nav-button next" type="button" aria-label="Mergi la pasul următor"><span>Următorul pas</span> →</button></div>
+    <script src="script.js"></script>
+</body>
+</html>

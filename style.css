@@ -1,0 +1,49 @@
+/* Animatii pentru vizualizarea grafului */
+.edge { transition: all 0.4s ease; stroke-linecap: round; }
+.edge-default { stroke: #cbd5e1; stroke-width: 4; }
+.edge-considering { stroke: #eab308; stroke-width: 8; filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.7)); }
+.edge-accepted { stroke: #22c55e; stroke-width: 8; }
+.edge-rejected { stroke: #ef4444; stroke-width: 4; stroke-dasharray: 8, 8; opacity: 0.5; }
+
+.node-circle { fill: #1e293b; stroke: #6366f1; stroke-width: 4; transition: fill 0.3s; }
+.node-text { fill: white; font-weight: bold; font-size: 16px; user-select: none; text-anchor: middle; dominant-baseline: central; }
+
+/* Animatie pentru acordeon */
+.accordion-content { transition: max-height 0.3s ease-out, padding 0.3s ease; max-height: 0; overflow: hidden; }
+.accordion-content.open { max-height: 200px; padding-top: 1rem; padding-bottom: 1rem; }
+
+.step-kicker { color: #4f46e5; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.step-kicker-dark { color: #a5b4fc; }
+
+.explanation-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.25rem; }
+.explanation-card p { color: #475569; line-height: 1.65; }
+.explanation-number { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin-bottom: 0.75rem; border-radius: 9999px; background: #e0e7ff; color: #4338ca; font-weight: 800; }
+
+.complexity-card { display: flex; flex-direction: column; gap: 0.75rem; border-top: 4px solid #6366f1; background: #f8fafc; padding: 1.25rem; }
+.complexity-card strong { color: #334155; font-size: 1.1rem; }
+.complexity-card span { color: #4338ca; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 1.5rem; font-weight: 800; }
+.complexity-card p { color: #64748b; line-height: 1.5; }
+
+.pseudocode { overflow-x: auto; border-radius: 0.75rem; background: #0f172a; color: #e2e8f0; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.95rem; line-height: 1.7; padding: 1.5rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.source-panel { width: min(100%, 74rem); margin-inline: auto; }
+.code-area { max-height: 38rem; overflow-y: auto; }
+.code-area pre { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
+
+.step-navigation { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 40; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 9999px; background: rgba(255, 255, 255, 0.95); box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15); backdrop-filter: blur(8px); }
+.step-nav-button { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2.5rem; border: 0; border-radius: 9999px; padding: 0.5rem 0.85rem; font-weight: 700; transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease; }
+.step-nav-button.previous { color: #475569; background: #f1f5f9; }
+.step-nav-button.previous:hover { color: #1e293b; background: #e2e8f0; }
+.step-nav-button.next { color: white; background: #4f46e5; }
+.step-nav-button.next:hover { background: #4338ca; }
+.step-nav-button.is-hidden { display: none; }
+.step-indicator { color: #475569; font-size: 0.8rem; font-weight: 800; white-space: nowrap; }
+.code-tab-btn[data-target="code-cpp"]:hover { color: #e2e8f0; }
+
+/* Fiecare pas ocupa aproape un ecran; pasul cu sursele ramane flexibil. */
+.lesson-step:not(#pasul-7) > div:first-child { min-height: calc(100svh - 4rem); }
+
+@media (max-width: 640px) {
+	.step-navigation { right: 0.75rem; bottom: 0.75rem; left: 0.75rem; justify-content: space-between; }
+	.step-nav-button span { display: none; }
+	.step-indicator { font-size: 0.75rem; }
+}
